@@ -20,15 +20,17 @@ function round(playerSelection, computerSelection){
   default:
   	//player = prompt('Enter rock, paper or scissors');
     alert("Enter rock, paper or scissors"); //prompts to enter the right word if misspelt
-    //a regex can be used here if an im=nput form is built
+    //a regex can be used here if an input form is built
     //(rock|paper|scissors)
 		}
-	if ((player==0&&computerSelection==2)||(player==1&&computerSelection==0)||(player==2&&computerSelection==1)){
+	if ((player==0&&computerSelection==2)||(player==1&&computerSelection==0)||
+			(player==2&&computerSelection==1)){
 		return "You Win!";// for winning scenarios, return message
-	} else if((player==2&&computerSelection==0)||(player==0&&computerSelection==1)||(player==1&&computerSelection==2)) {
-	return "You Lose!";// for losing scenarios return message
+	} else if((player==2&&computerSelection==0)||(player==0&&computerSelection==1)||
+			(player==1&&computerSelection==2)) {
+		return "You Lose!";// for losing scenarios return message
 	} else if((player==computerSelection)) {
-	return "It's a draw";// if it wasn't won or lost then it's a draw
+		return "It's a draw";// if it wasn't won or lost then it's a draw
 	}  else {
 		return "Something went wrong";//something actually went wrong :(
 	}
