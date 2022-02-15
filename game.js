@@ -49,12 +49,41 @@ function round(playerSelection, computerSelection){
 }
 
 function game (){
+
+	let playerScore = 0;
+	let computerScore = 0;
+	for (let i = 0; i < 3; i++) {
 	let playerSelection = prompt('Enter rock, paper or scissors');
 	playerSelection = playerSelection.toLowerCase();
 	const computerSelection = computerPlay();
 	console.log(playerSelection);
 	console.log(computerSelection);
-	return round(playerSelection, computerSelection);
+	let each = round(playerSelection, computerSelection);
+	switch(each) {
+  		case "You Win!":
+		playerScore+=1;
+    		break;
+  		case "You Lose!":
+		computerScore+=1;
+    		break;
+ 		 case "It's a draw"||"Something went wrong":
+    		break;
+    	}
+	/*if (each=="You Win!"){
+		playerScore+=1;
+	} else if (each=="You Lose!") {
+		computerScore+=1;
+	} else {
+		continue;
+	}*/
+	//console.log('playerScore"and"computerScore');
+
+	//return each;
+
+	console.log(playerScore);
+	console.log(computerScore);
+	//if (playerScore>computerScore)
+	} 
 
 }
 //console.log(computerSelection);
