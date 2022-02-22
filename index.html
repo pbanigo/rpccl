@@ -3,7 +3,7 @@
 <head>
   <title>Rock-Paper-Scissors</title>
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script type="text/javascript" src="games.js"></script>
+  <script type="text/javascript" defer src="gamedom.js"></script>
   <meta charset="UTF-8">
 </head>
 <body>
@@ -13,13 +13,25 @@
 			<h2>DOM Edition</h2>
 		</div>
 		<div id="game">
+			<p id="instructions">Ins</p>
 			<div class="item" id="rock">Rock</div>
 			<div class="item" id="paper">Paper</div>
-			<div class="item" id="Scissors">Scissors</div>
+			<div class="item" id="scissors">Scissors</div>
+			<div id="scores">
+				<div class="score" id="player">
+					<p id="pScore">0</p>
+					 <p> Player Score</p>
+				</div>
+				<div class="score" id="computer">
+					<p id="cScore">0</p>
+					 <p> Computer Score</p>
+				</div>
+			</div>
+			<p id="current"></p>
+			<p id="winner">Score</p>
 		</div>
-
+		<button onClick="window.location.reload();">Refresh Page</button>
 	</div>
 
-<button onClick="window.location.reload();">Refresh Page</button>
 </body>
 </html>
