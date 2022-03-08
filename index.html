@@ -2,17 +2,27 @@
 <html>
 <head>
   <title>Rock-Paper-Scissors</title>
-  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="style.css?=1">
   <script type="text/javascript" defer src="gamedom.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
 </head>
 <body>
 	<div id="main">
 		<div id="header">
 			<h1>Rock, Paper, Scissors</h1>
-			<h2>DOM Edition</h2>
+			<p>ROUND:<span></span></p>
+		<button id="start">Play Now</button>
 		</div>
 		<div id="game">
+			<div id="current">
+				<div class="score" id="player">
+					 <p id="pPlay"> Player Play</p>
+				</div>
+				<div class="score" id="computer">
+					 <p id="cPlay"> Computer Play</p>
+				</div>
+			</div>
 			<p id="instructions">Ins</p>
 			<div class="item" id="rock">Rock</div>
 			<div class="item" id="paper">Paper</div>
@@ -27,10 +37,9 @@
 					 <p> Computer Score</p>
 				</div>
 			</div>
-			<p id="current">What just played?</p>
 			<p id="winner">Score</p>
 		</div>
-		<button onClick="window.location.reload();">Refresh Page</button>
+		<button onClick="window.location.reload();">Restart!</button>
 	</div>
 
 </body>
