@@ -27,18 +27,10 @@ function playNow(){
 			console.log(thisRound);
 			thisRound+=1;
 
-        //result = playRound(playerSelection,computerSelection);
-        //tally(result);
-
     })
 	})
 
 }
-
-inst.textContent = "Who won?";//use these in the loops
-//let answer = prompt();
-//let computerSelection = computerPlay();
-//winner.textContent = computerSelection+" "+round(playerSelection,computerSelection);
 
 function computerPlay(){
 	//Generate a random number between 0 & 2 to represent each scenario
@@ -84,7 +76,3 @@ function round(playerSelection, computerSelection){
 		inst.textContent =  "Something is wrong";
 	}
 }
-function game() {
-	//initialize scores for the full game
-}
-
