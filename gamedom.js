@@ -6,30 +6,30 @@ const pScore = document.getElementById('pScore');
 const cScore = document.getElementById('cScore');
 let currentRound = document.getElementById('thisRound');
 
+let playerScore = 0;
+let computerScore = 0;
 
 
 
 function playNow(){
 	document.getElementById('start').setAttribute('onclick','window.location.reload()');
 	document.getElementById('start').textContent = "Reload!";
-	let playerScore = 0;
-	let computerScore = 0;
-	let thisRound = 0;
-	currentRound.textContent = `ROUND: ${thisRound}!`;
+	let thisRound = 1;
 	const plays = document.querySelectorAll("div.item");
 	plays.forEach(play => {
 		play.addEventListener('click', event => {
-			console.log(play.id)
+
+			currentRound.textContent = `ROUND: ${thisRound}!`;
 			playerSelection = play.id;
 			computerSelection = computerPlay();
 			pPlay.textContent = `You played ${playerSelection.toUpperCase()}!`
+			round(playerSelection,computerSelection);
+			console.log(thisRound);
+			thisRound+=1;
 
-			do {
-				round(playerSelection,computerSelection);
-			thisRound++;
-			} while (thisRound<5);
         //result = playRound(playerSelection,computerSelection);
         //tally(result);
+
     })
 	})
 
@@ -81,7 +81,7 @@ function round(playerSelection, computerSelection){
 		inst.textContent = "Computer Wins, You lose!";
 		//return "lose";
 	} else {
-		return "Something is wrong";
+		inst.textContent =  "Something is wrong";
 	}
 }
 function game() {
