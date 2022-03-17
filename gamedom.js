@@ -15,6 +15,7 @@ let computerScore = 0;
 
 
 function playNow(){
+	synth.speak(new SpeechSynthesisUtterance(inst.textContent));
 	document.getElementById('start').setAttribute('onclick','window.location.reload()');
 	document.getElementById('start').textContent = "Reload!";
 	let thisRound = 1;
