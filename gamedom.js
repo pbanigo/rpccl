@@ -1,12 +1,11 @@
 const inst = document.getElementById('instructions');
 const cPlay = document.getElementById('cPlay');
 const pPlay = document.getElementById('pPlay');
-const winner = document.getElementById('winner');
 const pScore = document.getElementById('pScore');
 const cScore = document.getElementById('cScore');
 let currentRound = document.getElementById('thisRound');
+const game  = document.getElementById('game');
 const synth = window.speechSynthesis;
-//let sayIt = new SpeechSynthesisUtterance(inst.textContent);
 
 
 let playerScore = 0;
@@ -15,14 +14,15 @@ let computerScore = 0;
 
 
 function playNow(){
+	game.style.display = "block";
 	synth.speak(new SpeechSynthesisUtterance(inst.textContent));
 	document.getElementById('start').setAttribute('onclick','window.location.reload()');
 	document.getElementById('start').textContent = "Reload!";
 	let thisRound = 1;
 	const plays = document.querySelectorAll("div.item");
 	plays.forEach(play => {
-		play.addEventListener('click', event => {
 
+		play.addEventListener('click', function here(event) {
 			currentRound.textContent = `ROUND: ${thisRound}!`;
 			playerSelection = play.id;
 			computerSelection = computerPlay();
@@ -31,8 +31,25 @@ function playNow(){
 			console.log(thisRound);
 			thisRound+=1;
 
+
     })
+
+		/*
+		play.addEventListener('click', event => {
+			currentRound.textContent = `ROUND: ${thisRound}!`;
+			playerSelection = play.id;
+			computerSelection = computerPlay();
+			pPlay.textContent = `You played ${playerSelection.toUpperCase()}!`
+			round(playerSelection,computerSelection);
+			console.log(thisRound);
+			thisRound+=1;
+
+
+    })
+
+    */
 	})
+
 
 }
 
@@ -81,6 +98,20 @@ function round(playerSelection, computerSelection){
 		//return "lose";
 	} else {
 		inst.textContent =  "Something is wrong";
+	}
+
+
+	if (playerScore==2 || computerScore==2){
+		game.style.display = "none";
+		document.getElementById('start').textContent = "Replay!";
+		if (playerScore>computerScore){
+			whoWon = "You won!"
+		} else {
+			whoWon = "Computer Won!"
+		}
+		currentRound.textContent = `It's over! ${whoWon}! You scored ${playerScore} points & Computer scored ${computerScore} points.`;
+		synth.speak(new SpeechSynthesisUtterance(currentRound.textContent));
+
 	}
 }
 
