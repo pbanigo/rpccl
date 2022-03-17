@@ -1,2 +1,2 @@
 # rpccl
- Rock Paper Scissors with console
+ Rock Paper Scissors on the DOM
