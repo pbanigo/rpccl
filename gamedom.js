@@ -12,6 +12,8 @@ let currentRound = document.getElementById('thisRound');
 function playNow(){
 	document.getElementById('start').setAttribute('onclick','window.location.reload()');
 	document.getElementById('start').textContent = "Reload!";
+	let playerScore = 0;
+	let computerScore = 0;
 	let thisRound = 0;
 	currentRound.textContent = `ROUND: ${thisRound}!`;
 	const plays = document.querySelectorAll("div.item");
@@ -21,42 +23,17 @@ function playNow(){
 			playerSelection = play.id;
 			computerSelection = computerPlay();
 			pPlay.textContent = `You played ${playerSelection.toUpperCase()}!`
+
+			do {
+				round(playerSelection,computerSelection);
+			thisRound++;
+			} while (thisRound<5);
         //result = playRound(playerSelection,computerSelection);
         //tally(result);
     })
 	})
 
 }
-/* lets try another function
-const rockDiv  = document.getElementById('rock');
-const paperDiv  = document.getElementById('paper');
-const scissorsDiv = document.getElementById('scissors');
-
-const playRock = rockDiv.addEventListener('click',clickedRock);;
-function clickedRock(){
-	computerPlay();
-	pPlay.textContent = 'You played ROCK!'
-	//I can actually do the scoring here? if else if
-	return 'rock'
-}
-const playPaper = paperDiv.addEventListener('click',clickedPaper);;
-function clickedPaper(){
-	computerPlay();
-	pPlay.textContent = 'You played PAPER!'
-	return 'paper'
-}
-const playScissors = scissorsDiv.addEventListener('click',clickedScissors);;
-function clickedScissors(){
-	computerPlay();
-	pPlay.textContent = 'You played SCISSORS!'
-	return 'scissors'
-}
-*/
-
-
-
-
-
 
 inst.textContent = "Who won?";//use these in the loops
 //let answer = prompt();
@@ -87,20 +64,27 @@ function computerPlay(){
 }
 function round(playerSelection, computerSelection){
 	if ((playerSelection==computerSelection)){
-		return "draw";
+		inst.textContent = "It's a Draw";
+		//return "draw";
 	} else if ((playerSelection=="rock"&&computerSelection=="scissors")||(playerSelection=="paper"&&computerSelection=="rock")||
 		(playerSelection=="scissors"&&computerSelection=="paper")) {
-		return "win";
+		playerScore++;
+		pScore.textContent = playerScore;
+		cScore.textContent = computerScore;
+		inst.textContent = "You Win!";
+		//return "win";
 	} else if ((playerSelection=="scissors"&&computerSelection=="rock")||(playerSelection=="rock"&&computerSelection=="paper")||
 		(playerSelection=="paper"&&computerSelection=="scissors")) {
-		return "lose";
+		computerScore++;
+		pScore.textContent = playerScore;
+		cScore.textContent = computerScore;
+		inst.textContent = "Computer Wins, You lose!";
+		//return "lose";
 	} else {
 		return "Something is wrong";
 	}
 }
 function game() {
 	//initialize scores for the full game
-	let playerScore = 0;
-	let computerScore = 0;
 }
 
