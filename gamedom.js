@@ -4,7 +4,29 @@ const pPlay = document.getElementById('pPlay');
 const winner = document.getElementById('winner');
 const pScore = document.getElementById('pScore');
 const cScore = document.getElementById('cScore');
+let currentRound = document.getElementById('thisRound');
 
+
+
+const start = document.getElementById('start').addEventListener('click',playNow);
+function playNow(){
+	let thisRound = 0;
+	currentRound.textContent = thisRound;
+	const plays = document.querySelectorAll("div.item");
+	plays.forEach(play => {
+		play.addEventListener('click', event => {
+			console.log(play.id)
+			playerSelection = play.id;
+			computerSelection = computerPlay();
+			pPlay.textContent = `You played ${playerSelection.toUpperCase()}!`
+        //result = playRound(playerSelection,computerSelection);
+        //tally(result);
+    })
+	})
+			thisRound+=1;
+
+}
+/* lets try another function
 const rockDiv  = document.getElementById('rock');
 const paperDiv  = document.getElementById('paper');
 const scissorsDiv = document.getElementById('scissors');
@@ -28,10 +50,10 @@ function clickedScissors(){
 	pPlay.textContent = 'You played SCISSORS!'
 	return 'scissors'
 }
+*/
 
- 
 
- 
+
 
 
 
@@ -47,29 +69,29 @@ function computerPlay(){
 	let comPlay;
 	//lets convert to answers this time
 	switch(num) {
-  		case 0:
+		case 0:
 		cPlay.textContent = 'Computer played ROCK!';
 		comPlay="rock";
-    		break;
-  		case 1:
+		break;
+		case 1:
 		cPlay.textContent = 'Computer played PAPER!';
 		comPlay="paper";
-    		break;
-  		case 2:
+		break;
+		case 2:
 		cPlay.textContent = 'Computer played SCISSORS!';
 		comPlay="scissors";
-    		break;
-    	}
+		break;
+	}
 	return comPlay;
 }
 function round(playerSelection, computerSelection){
 	if ((playerSelection==computerSelection)){
 		return "draw";
 	} else if ((playerSelection=="rock"&&computerSelection=="scissors")||(playerSelection=="paper"&&computerSelection=="rock")||
-			(playerSelection=="scissors"&&computerSelection=="paper")) {
+		(playerSelection=="scissors"&&computerSelection=="paper")) {
 		return "win";
 	} else if ((playerSelection=="scissors"&&computerSelection=="rock")||(playerSelection=="rock"&&computerSelection=="paper")||
-			(playerSelection=="paper"&&computerSelection=="scissors")) {
+		(playerSelection=="paper"&&computerSelection=="scissors")) {
 		return "lose";
 	} else {
 		return "Something is wrong";
