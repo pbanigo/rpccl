@@ -5,6 +5,9 @@ const winner = document.getElementById('winner');
 const pScore = document.getElementById('pScore');
 const cScore = document.getElementById('cScore');
 let currentRound = document.getElementById('thisRound');
+const synth = window.speechSynthesis;
+//let sayIt = new SpeechSynthesisUtterance(inst.textContent);
+
 
 let playerScore = 0;
 let computerScore = 0;
@@ -57,6 +60,7 @@ function computerPlay(){
 function round(playerSelection, computerSelection){
 	if ((playerSelection==computerSelection)){
 		inst.textContent = "It's a Draw";
+		synth.speak(new SpeechSynthesisUtterance(`for ${currentRound.textContent} ${inst.textContent}`));
 		//return "draw";
 	} else if ((playerSelection=="rock"&&computerSelection=="scissors")||(playerSelection=="paper"&&computerSelection=="rock")||
 		(playerSelection=="scissors"&&computerSelection=="paper")) {
@@ -64,6 +68,7 @@ function round(playerSelection, computerSelection){
 		pScore.textContent = playerScore;
 		cScore.textContent = computerScore;
 		inst.textContent = "You Win!";
+		synth.speak(new SpeechSynthesisUtterance(`for ${currentRound.textContent} ${inst.textContent}`));
 		//return "win";
 	} else if ((playerSelection=="scissors"&&computerSelection=="rock")||(playerSelection=="rock"&&computerSelection=="paper")||
 		(playerSelection=="paper"&&computerSelection=="scissors")) {
@@ -71,8 +76,12 @@ function round(playerSelection, computerSelection){
 		pScore.textContent = playerScore;
 		cScore.textContent = computerScore;
 		inst.textContent = "Computer Wins, You lose!";
+		synth.speak(new SpeechSynthesisUtterance(`for ${currentRound.textContent} ${inst.textContent}`));
 		//return "lose";
 	} else {
 		inst.textContent =  "Something is wrong";
 	}
 }
+
+
+
