@@ -3,7 +3,8 @@ const cPlay = document.getElementById('cPlay');
 const pPlay = document.getElementById('pPlay');
 const pScore = document.getElementById('pScore');
 const cScore = document.getElementById('cScore');
-let currentRound = document.getElementById('thisRound');
+const currentPlay = document.getElementById('current');
+const currentRound = document.getElementById('thisRound');
 const game  = document.getElementById('game');
 const synth = window.speechSynthesis;
 
@@ -14,6 +15,8 @@ let computerScore = 0;
 
 
 function playNow(){
+	currentRound.style.display = "none";
+	currentPlay.style.display = "none";
 	game.style.display = "block";
 	synth.speak(new SpeechSynthesisUtterance(inst.textContent));
 	document.getElementById('start').setAttribute('onclick','window.location.reload()');
@@ -23,31 +26,17 @@ function playNow(){
 	plays.forEach(play => {
 
 		play.addEventListener('click', function here(event) {
+			currentPlay.style.display = "flex";
+			currentRound.style.display = "block";
 			currentRound.textContent = `ROUND: ${thisRound}!`;
 			playerSelection = play.id;
 			computerSelection = computerPlay();
 			pPlay.textContent = `You played ${playerSelection.toUpperCase()}!`
 			round(playerSelection,computerSelection);
-			console.log(thisRound);
 			thisRound+=1;
 
 
-    })
-
-		/*
-		play.addEventListener('click', event => {
-			currentRound.textContent = `ROUND: ${thisRound}!`;
-			playerSelection = play.id;
-			computerSelection = computerPlay();
-			pPlay.textContent = `You played ${playerSelection.toUpperCase()}!`
-			round(playerSelection,computerSelection);
-			console.log(thisRound);
-			thisRound+=1;
-
-
-    })
-
-    */
+		})
 	})
 
 
@@ -93,7 +82,7 @@ function round(playerSelection, computerSelection){
 		computerScore++;
 		pScore.textContent = playerScore;
 		cScore.textContent = computerScore;
-		inst.textContent = "Computer Wins, You lose!";
+		inst.textContent = "Computer Wins!";
 		synth.speak(new SpeechSynthesisUtterance(`for ${currentRound.textContent} ${inst.textContent}`));
 		//return "lose";
 	} else {
@@ -101,15 +90,17 @@ function round(playerSelection, computerSelection){
 	}
 
 
-	if (playerScore==2 || computerScore==2){
+	if (playerScore==5 || computerScore==5){
 		game.style.display = "none";
 		document.getElementById('start').textContent = "Replay!";
 		if (playerScore>computerScore){
 			whoWon = "You won!"
+			message = "Congrats!"
 		} else {
 			whoWon = "Computer Won!"
+			message = "Better luck next time."
 		}
-		currentRound.textContent = `It's over! ${whoWon}! You scored ${playerScore} points & Computer scored ${computerScore} points.`;
+		currentRound.textContent = `It's over! ${whoWon}! You scored ${playerScore} points & Computer scored ${computerScore} points. ${message}`;
 		synth.speak(new SpeechSynthesisUtterance(currentRound.textContent));
 
 	}
