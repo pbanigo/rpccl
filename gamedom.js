@@ -8,10 +8,12 @@ let currentRound = document.getElementById('thisRound');
 
 
 
-const start = document.getElementById('start').addEventListener('click',playNow);
+
 function playNow(){
+	document.getElementById('start').setAttribute('onclick','window.location.reload()');
+	document.getElementById('start').textContent = "Reload!";
 	let thisRound = 0;
-	currentRound.textContent = thisRound;
+	currentRound.textContent = `ROUND: ${thisRound}!`;
 	const plays = document.querySelectorAll("div.item");
 	plays.forEach(play => {
 		play.addEventListener('click', event => {
@@ -23,7 +25,6 @@ function playNow(){
         //tally(result);
     })
 	})
-			thisRound+=1;
 
 }
 /* lets try another function
