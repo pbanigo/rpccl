@@ -1,3 +1,11 @@
+//User Calls game()
+//game initialises player and computer score to 0
+//game opens a loop that runs thrice
+//		loop assigns playerSelection to what you select
+//		loop assigns computerSelection to value of computerPlay
+//		loop calls the round() function
+//			round() compares player & computerSelection & gives score
+//Once loop is complete, if statement compares scores and declares winner
 function computerPlay(){
 	//Generate a random number between 0 & 2 to represent each scenario
 	//0-Rock, 1-Paper, 2-Scissors.
